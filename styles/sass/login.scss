@@ -293,6 +293,11 @@
 		display:flex;
 		align-items:center;
 		justify-content: space-between;
+		.city{
+            text-align: right;
+            flex: 1;
+            color:#26282c;
+        }
 		span{
 			font:.24rem/1.5 $font-style-base;
 			color:#26282c;
@@ -345,6 +350,12 @@
 			}
 		}
 	}
+}
+.picker .picker-panel .picker-choose .picker-title{
+    font-size:.24rem !important;
+}
+.picker .picker-panel .wheel-wrapper .wheel .wheel-scroll .wheel-item{
+    font-size:.3rem !important;
 }
 /*apply-success*/
 .apply-success{

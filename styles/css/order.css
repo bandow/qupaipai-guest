@@ -763,6 +763,15 @@ input {
   color: #26282c;
 }
 
+.onekey-order .onekey-item .items .city {
+  text-align: right;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: #26282c;
+}
+
 .onekey-order .onekey-item .items label {
   margin-left: .4rem;
   font-size: 0;
@@ -822,6 +831,76 @@ input {
           transform: rotateZ(135deg);
 }
 
+.onekey-order .onekey-item .items .add {
+  width: 1.7rem;
+  height: .4rem;
+  border: 1px solid #06c1ae;
+  border-left: 0;
+  border-right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.onekey-order .onekey-item .items .add i {
+  font: 0.24rem/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft Yahei", STHeiti, Tahoma, Simsun, sans-serif;
+  width: .4rem;
+  height: .4rem;
+  background-color: #06c1ae;
+  color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.onekey-order .onekey-item .items .add input {
+  font: 0.24rem/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft Yahei", STHeiti, Tahoma, Simsun, sans-serif;
+  background: none;
+  outline: none;
+  border: none;
+  width: .9rem;
+  text-align: center;
+}
+
+.onekey-order .onekey-item .items .date {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.onekey-order .onekey-item .items .date em {
+  margin: 0 .1rem;
+  text-align: right;
+  font: 0.24rem/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft Yahei", STHeiti, Tahoma, Simsun, sans-serif;
+}
+
+.onekey-order .onekey-item .items .date span {
+  font: 0.24rem/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft Yahei", STHeiti, Tahoma, Simsun, sans-serif;
+}
+
 .onekey-order .onekey-btn {
   margin: .4rem .2rem;
   height: .8rem;
@@ -845,4 +924,12 @@ input {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.picker .picker-panel .picker-choose .picker-title {
+  font-size: .24rem !important;
+}
+
+.picker .picker-panel .wheel-wrapper .wheel .wheel-scroll .wheel-item {
+  font-size: .3rem !important;
 }

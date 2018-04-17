@@ -33,20 +33,100 @@
   <meta name="x5-page-mode" content="app">  
   <title>一键下单</title>
   <link rel="stylesheet" href="../plugins/weui/weui.min.css">
+  <link rel="stylesheet" href="../plugins/daterangepicke/daterangepicker.css">
+  <link rel="stylesheet" href="../plugins/picker/github-light.css">
   <link rel="stylesheet" href="../styles/css/order.css">
-  <link rel="stylesheet" href="../plugins/CityPicker/framework7.ios.min.css">
-  <link rel="stylesheet" href="../plugins/CityPicker/framework7.ios.colors.min.css" >
   <style>
-    .navbar a.link, .subnavbar a.link, .toolbar a.link{
-      color:#26282c;
-      font:.24rem/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue","Microsoft Yahei",STHeiti,Tahoma,Simsun,sans-serif;
-      color:#26282c;
+    .date-picker-wrapper{z-index:10!important;}
+    .date-picker-wrapper .last-date-selected{background-color: #ffe5b4 !important;border-radius: 0 100% 100% 0;}
+    .date-picker-wrapper .first-date-selected{background-color: #ffe5b4 !important;border-radius: 100% 0 0 100%;}
+    .date-picker-wrapper .first-date-selected>div{background:#06c1ae; border-radius:5px 0 0 5px;}
+    .date-picker-wrapper .last-date-selected>div{background:#06c1ae;border-radius:0 5px 5px 0;}
+    .swiper-pagination{text-align:center;}
+    .swiper-pagination-bullet{background:#fff;opacity:1;border:1px solid #ccc;}
+    .swiper-pagination-bullet-active{background:#e25946;border:1px solid #e25946;}  
+    .date-picker-wrapper {position: absolute;z-index: 1;border: none;background-color: #fff;padding: 0;font-size: 12px;line-height: 20px;color: #aaa;font-family: Arial,sans-serif;box-shadow: none;box-sizing: initial;overflow-y:auto;}
+    .date-picker-wrapper .month-wrapper table .day.lalala { background-color:orange; }
+    .options { display:none; border-left:6px solid #8ae; padding:10px; font-size:12px; line-height:1.4; background-color:#eee; border-radius:4px;}
+    .date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
+    .date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
+    .date-picker-wrapper .month-wrapper table{width:100% !important;border-top: 1px solid #f2f2f2;}
+    .date-picker-wrapper.no-shortcuts {padding-bottom: 0;}
+    .date-picker-wrapper .month-wrapper {
+      border: none;
+      border-radius: 0;
+      background-color: #fff;
+      padding: 0;
+      cursor: default;
+      position: absolute;
+      bottom:0;
+      height:80vh;
+      overflow-y: auto;
     }
-    .picker-modal{
-      background: #fff;
+    .date-picker-wrapper .month-wrapper2 {-webkit-overflow-scrolling : touch; }
+    .date-picker-wrapper .month-wrapper table th, .date-picker-wrapper .month-wrapper table td{
+    width: 14.2857143%;
+    padding:0;
+    -webkit-box-sizing: border-box; /*Safari3.2+*/
+    box-sizing: border-box;
     }
-    .picker-item span{
-      font-size:.3rem;
+    .date-picker-wrapper .drp_top-bar {
+      position: absolute;
+      padding: 0;
+      left: 0;
+      width: 100%;
+      top:0;
+      height: 8vh;
+      background: #f2f2f2;
+      line-height: 8vh;
+    }
+    .date-picker-wrapper .drp_top-bar .apply-btn.disabled,.date-picker-wrapper .drp_top-bar .apply-btn{
+    border: 0;
+      background: none;
+      display: block;
+      height: 8vh;
+      top: 0;
+      right: 20px;
+      color:#333;
+    }
+    .date-picker-wrapper .month-name{    
+    color: #000;
+      font-size: 14px;
+    }
+    .date-picker-wrapper .drp_top-bar .default-top,.date-picker-wrapper .drp_top-bar.normal .normal-top{
+      text-align: center;
+      color: #333;
+      font-weight: bold;
+      background:#fff;
+    }
+    .date-picker-wrapper .selected-days {
+      font-weight: bold;
+      font-size: 14px;
+      font-style: normal;
+    }
+    .date-picker-wrapper .month-wrapper table .week-name {
+      height: 50px;
+      line-height: 50px;
+    }
+    .date-picker-wrapper table .caption {
+      height: 50px;
+    }
+    .date-picker-wrapper .month-wrapper table .day.checked{
+    background-color: #88e3da;    
+    }
+    .date-picker-wrapper .month-wrapper table .day.toMonth.valid.checked {
+      color: #06c1ae;
+      cursor: pointer;
+    }
+    .date-picker-wrapper .month-wrapper table .day.real-today{
+    background-color:transparent;
+    }
+    .date-picker-wrapper .month-wrapper table .day{
+    line-height:3.8;
+    font-size:12px;
+    }
+    .date-picker-wrapper table .caption .next, .date-picker-wrapper table .caption .prev{
+      font-family:Simsun,"Microsoft Yahei",STHeiti,Tahoma,sans-serif;
     }
   </style>
 </head>
@@ -69,7 +149,7 @@
         </div>
         <div class="items">
           <span>拍摄城市：</span>
-          <label><input type="tel" id="location" placeholder="选择所在省份、城市"></label>
+          <span class="city" id="picker">选择所在省份、城市</span>
           <i></i>
         </div>
         <div class="items">
@@ -82,7 +162,11 @@
         </div>
         <div class="items">
           <span>拍摄张数：</span>
-          <label><input type="text" placeholder=""></label>
+          <div class="add">
+            <i onclick="reduceFun(this);">-</i>
+            <input type="text" value="1" placeholder="">
+            <i onclick="addFun()">+</i>
+          </div>
         </div>
         <div class="items">
           <span>拍摄费用：</span>
@@ -90,7 +174,11 @@
         </div>
         <div class="items">
           <span>拍摄周期：</span>
-          <label><input type="text" placeholder=""></label>
+          <div class="date" id="date">
+            <span id="checkInDay" class="check-in-day"></span>
+            <em>至</em>
+            <span id="checkOutDay" class="check-out-day"></span>
+          </div>
         </div>
         <div class="items">
           <span>备注：</span>
@@ -112,10 +200,28 @@
   <script src="../plugins/jquery/jquery-3.1.1.min.js"></script>
   <script src="../scripts/flexible.js"></script>
   <script src="../scripts/common.js"></script>
-  <script src="../plugins/CityPicker/framework7.min.js"></script>
-  <script src="../plugins/CityPicker/regionsObject2.js"></script>
-  <script src="../plugins/CityPicker/cityPicker.js"></script>
+  <script src="../plugins/picker/picker.min.js"></script>
+  <script src="../plugins/picker/city.js"></script>
+  <script src="../plugins/picker/index.js"></script>
+  <script src="../plugins/daterangepicke/moment.min.js"></script>
+  <script src="../plugins/daterangepicke/jquery.daterangepicker.js"></script>
   <script>
+    // 拍摄张数
+    var num=$(".items .add input").val(),
+        $numVal=$(".items .add input");
+    function reduceFun(obj){
+      if(num>=2){
+        num--;
+        $numVal.val(num);
+      }else{
+        return false;
+      } 
+    }
+    function addFun(){
+      num++;
+      $numVal.val(num);
+    }
+    // 提示弹出框
     function promptFun(){
       $(".mask").show();
       $(".mask-prompt").addClass("on");
@@ -127,6 +233,49 @@
     function src(){
       window.location.href="place-an-order-success.html";
     }
+  </script>
+  <script>
+    $(document).ready(function () {
+        
+          var myDate = new Date();
+          var y=myDate.getFullYear();
+          var m=myDate.getMonth()+1;
+          var day=myDate.getDate();
+          var hDay=myDate.getDate()+1;
+          
+          //初始化当天时间
+          $(".check-in-day").html(y+"-"+m+"-"+day);
+          $(".check-out-day").html(y+"-"+m+"-"+hDay);
+          
+          $('#date').dateRangePicker({
+            startDate: new Date(),  //默认今天开始
+            getValue: function(){   //选择开始和结束的日期      
+              if ($('#checkInDay').html() && $('#checkOutDay').html() )
+                return $('#checkInDay').html() + ' to ' + $('#checkOutDay').html();
+              else
+                return '';
+            },
+            setValue: function(s,s1,s2){  //回调页面上
+              $('#checkInDay').html(s1);
+              $('#checkOutDay').html(s2);
+            },
+            showDateFilter: function(time, date){  
+                var html='<div style="padding:0;">';
+                    html+='<span style="font-size:14px;">'+date+'</span>';
+                    html+='</div>';
+                return html;   
+            },
+            showShortcuts:false,   //去掉快捷html
+            inline:false,
+            singleMonth:false,  //true显示1个月，false为2个月
+            batchMode:true,
+            stickyMonths:true, //如果是true，只会有一个以前和一个下一个按钮。点击他们将改变两个月。
+            // extraClass:'dengcb',  //添加class
+            showTopbar:false,     //true显示确定按钮 false不显示确定按钮选择好就确定
+            selectForward:false,   //true选择开始的时间前面就不能选，默认false
+            selectBackward:false,  //true只能选择1天     
+        })
+     }); 
   </script>
 </body>
 </html>

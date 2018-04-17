@@ -648,6 +648,15 @@ input {
           justify-content: space-between;
 }
 
+.apply-data-items .items .city {
+  text-align: right;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: #26282c;
+}
+
 .apply-data-items .items span {
   font: 0.24rem/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft Yahei", STHeiti, Tahoma, Simsun, sans-serif;
   color: #26282c;
@@ -710,6 +719,14 @@ input {
   -webkit-transform: rotateZ(135deg);
       -ms-transform: rotate(135deg);
           transform: rotateZ(135deg);
+}
+
+.picker .picker-panel .picker-choose .picker-title {
+  font-size: .24rem !important;
+}
+
+.picker .picker-panel .wheel-wrapper .wheel .wheel-scroll .wheel-item {
+  font-size: .3rem !important;
 }
 
 /*apply-success*/

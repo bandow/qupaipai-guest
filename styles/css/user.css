@@ -532,6 +532,15 @@ input {
           justify-content: space-between;
 }
 
+.info-item .items .city {
+  text-align: right;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: #26282c;
+}
+
 .info-item .items span {
   font: 0.24rem/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft Yahei", STHeiti, Tahoma, Simsun, sans-serif;
   color: #26282c;
@@ -621,101 +630,14 @@ input {
           justify-content: center;
 }
 
-/*
-.info-item{
-	.items{
-		position: relative;
-		padding:0 .1rem;
-		height:1rem;
-		background-color:#fff;
-		border-bottom:1px solid #ddd;
-		display:flex;
-		align-items:center;
-		span{
-			margin-left:.2rem;
-			width: 20%;
-			font:.3rem/1.5 $font-style-base;
-			color:#4c4c4c;
-		}
-		em{
-			font:.3rem/1.5 $font-style-base;
-			color:#9c9c9c;
-		}
-		label{
-		    font-size: 0;
-			flex:1;
-			input{
-				background:none;
-				outline:none;
-				border:none;
-				font:.3rem/1.5 $font-style-base;
-				color:#9c9c9c;
-				&::-webkit-input-placeholder{
-					font:.3rem/1.5 $font-style-base;
-					color:#9c9c9c;
-				};
-			}
-			button{
-			    padding: 0;
-    			margin: 0;
-				background:none;
-				outline:none;
-				border:none;
-			    width: 100%;
-    			text-align: left;
-				font:.3rem/1.5 $font-style-base;
-				color:#9c9c9c;
-			}
-		}
-		.select{
-			display:flex;
-			align-items:center;
-			.select-list{
-				display:flex;
-				align-items:center;
-				i{
-					width:.26rem;
-					height:.26rem;
-					background:url('../../images/select_icon2.png') no-repeat;
-					background-size: 100% auto;
-				}
-				span{
-					font:.3rem/1.5 $font-style-base;
-					color:#9c9c9c;
-					flex:1;
-				}
-				&:nth-child(2){
-					margin-left:.5rem;
-				};
-			}
-			.select-list.on{
-				i{
-					background:url('../../images/select_icon1.png') no-repeat;
-					background-size: 100% auto;
-				}
-			}
-		}
-		&:nth-child(2n){
-			margin-bottom:.15rem;
-		}
-	}
-	.items-arrow{
-		&:before{
-			content: '';
-		    position: absolute;
-	        right:.3rem;
-		    top: 50%;
-		    width: 10px;
-		    height: 10px;
-		    border: 1px solid;
-		    border-bottom: 0;
-		    border-right: 0;
-		    margin: -5px 0 0 -5px;
-		    color: #b5b5b5;
-		    transform: rotateZ(135deg);
-		}
-	}
-}	
+.picker .picker-panel .picker-choose .picker-title {
+  font-size: .24rem !important;
+}
+
+.picker .picker-panel .wheel-wrapper .wheel .wheel-scroll .wheel-item {
+  font-size: .3rem !important;
+}
+
 /*binding-info*/
 .binding-info {
   background-color: #fff;
