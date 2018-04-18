@@ -198,6 +198,23 @@
 			}
 		}
 	}
+	.btn{
+		position:fixed;
+	    bottom:0;
+	    width:100%;
+	    max-width: 7.5rem;
+	    height:.8rem;
+	    background-color: #06c1ae;
+		a{
+			width:100%;
+			height:100%;
+			font:.3rem/1.5 $font-style-base;
+			color:#fff;
+			display:flex;
+			align-items:center;
+			justify-content: center;
+		}
+	}
 }
 /*info*/
 .info{
@@ -364,6 +381,8 @@
 		>a{
 			font:.24rem/1.5 $font-style-base;
 			color:#26282c;	
+		    border-left: 1px solid #eee;
+   			padding-left: .2rem;
 		}
 	}
 }

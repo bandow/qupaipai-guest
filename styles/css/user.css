@@ -468,6 +468,34 @@ input {
           transform: rotateZ(135deg);
 }
 
+.user .btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 7.5rem;
+  height: .8rem;
+  background-color: #06c1ae;
+}
+
+.user .btn a {
+  width: 100%;
+  height: 100%;
+  font: 0.3rem/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft Yahei", STHeiti, Tahoma, Simsun, sans-serif;
+  color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 /*info*/
 .info .head {
   padding: .2rem 0;
@@ -713,6 +741,8 @@ input {
 .binding-info .items > a {
   font: 0.24rem/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft Yahei", STHeiti, Tahoma, Simsun, sans-serif;
   color: #26282c;
+  border-left: 1px solid #eee;
+  padding-left: .2rem;
 }
 
 /*modify-password*/

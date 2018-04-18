@@ -711,6 +711,7 @@ input {
   position: fixed;
   bottom: 0;
   width: 100%;
+  max-width: 7.5rem;
   height: .8rem;
   background-color: #06c1ae;
 }
@@ -758,6 +759,10 @@ input {
           justify-content: space-between;
 }
 
+.onekey-order .onekey-item .items:last-child {
+  height: 1.2rem;
+}
+
 .onekey-order .onekey-item .items span {
   font: 0.24rem/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft Yahei", STHeiti, Tahoma, Simsun, sans-serif;
   color: #26282c;
@@ -769,6 +774,22 @@ input {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  color: #26282c;
+}
+
+.onekey-order .onekey-item .items textarea {
+  background: none;
+  outline: none;
+  border: none;
+  padding: .2rem 0;
+  height: 80%;
+  width: 100%;
+  font: 0.24rem/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft Yahei", STHeiti, Tahoma, Simsun, sans-serif;
+  color: #26282c;
+}
+
+.onekey-order .onekey-item .items textarea::-webkit-input-placeholder {
+  font: 0.24rem/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft Yahei", STHeiti, Tahoma, Simsun, sans-serif;
   color: #26282c;
 }
 
