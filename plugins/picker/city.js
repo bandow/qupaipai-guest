@@ -1,5 +1,6 @@
 var city = [
   {
+    "id":1,
     "name": "北京",
     "sub": [
       {
@@ -63,9 +64,11 @@ var city = [
     "type": 0
   },
   {
+    "id":2,
     "name": "广东",
     "sub": [
       {
+        "id":1,
         "name": "广州",
         "sub": [
           {
@@ -111,6 +114,7 @@ var city = [
         "type": 0
       },
       {
+        "id":2,
         "name": "深圳",
         "sub": [
           {
@@ -616,6 +620,7 @@ var city = [
     "type": 1
   },
   {
+    "id":3,
     "name": "上海",
     "sub": [
       {
@@ -682,6 +687,7 @@ var city = [
     "type": 0
   },
   {
+    "id":4,
     "name": "天津",
     "sub": [
       {

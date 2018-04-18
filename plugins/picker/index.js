@@ -1,4 +1,6 @@
 var nameEl = document.getElementById('picker');
+var nameProvince=document.getElementById('province');
+var nameCity=document.getElementById('city');
 
 var first = []; /* 省，直辖市 */
 var second = []; /* 市 */
@@ -11,10 +13,11 @@ var selectedIndex = [0, 0]; /* 默认选中的地区 */
 var checked = [0, 0]; /* 已选选项 */
 
 function creatList(obj, list){
-  obj.forEach(function(item, index, arr){
+  obj.forEach(function(item, index, id, arr){
   var temp = new Object();
   temp.text = item.name;
   temp.value = index;
+  temp.id=item.id;
   list.push(temp);
   })
 }
@@ -43,10 +46,18 @@ var picker = new Picker({
 picker.on('picker.select', function (selectedVal, selectedIndex) {
   var text1 = first[selectedIndex[0]].text;
   var text2 = second[selectedIndex[1]].text;
+  var dataId1 = first[selectedIndex[0]].id;
+  var dataId2 = second[selectedIndex[1]].id;
+  console.log(dataId1,dataId2);
+
+
+
   // var text3 = third[selectedIndex[2]] ? third[selectedIndex[2]].text : '';
 
   // nameEl.innerText = text1 + ' ' + text2 + ' ' + text3;
 	nameEl.innerText = text1 + ' ' + text2;
+  nameProvince.value=dataId1;
+  nameCity.value=dataId2;
 });
 
 picker.on('picker.change', function (index, selectedIndex) {

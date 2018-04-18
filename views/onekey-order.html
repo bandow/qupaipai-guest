@@ -39,7 +39,9 @@
   <style>
     .date-picker-wrapper{z-index:10!important;}
     .date-picker-wrapper .last-date-selected{background-color: #ffe5b4 !important;border-radius: 0 100% 100% 0;}
-    .date-picker-wrapper .first-date-selected{background-color: #ffe5b4 !important;border-radius: 100% 0 0 100%;}
+    .date-picker-wrapper .first-date-selected{
+      background-color: #06c1ae !important;border-radius: 5px;
+    }
     .date-picker-wrapper .first-date-selected>div{background:#06c1ae; border-radius:5px 0 0 5px;}
     .date-picker-wrapper .last-date-selected>div{background:#06c1ae;border-radius:0 5px 5px 0;}
     .swiper-pagination{text-align:center;}
@@ -132,6 +134,8 @@
 </head>
 <body>
 	<div class="wrapper wrapper-bgcolor wrapper-order-info">
+    <input type="hidden" id="province">
+    <input type="hidden" id="city">
     <header class="header">
       <a class="left" href="javascript:history.back(-1);"></a>
       <h1>一键下单</h1>
@@ -182,12 +186,12 @@
         </div>
         <div class="items">
           <span>预交付时间：</span>
-          <label><input type="text" placeholder="填写预交付时间"></label>
+          <label><input type="text" id="date1" placeholder="填写预交付时间"></label>
         </div>
         <div class="items">
          <!--  <span>备注：</span>
           <label><input type="text" placeholder="请输入备注"></label> -->
-          <textarea name="" rows="2" placeholder="备注:"></textarea>
+          <textarea name="" rows="2" placeholder="请填写备注"></textarea>
         </div>
       </div>
       <div class="onekey-btn"><a href="javascript:;" onclick="src();">支付下单</a></div>
@@ -279,7 +283,21 @@
             showTopbar:false,     //true显示确定按钮 false不显示确定按钮选择好就确定
             selectForward:false,   //true选择开始的时间前面就不能选，默认false
             selectBackward:false,  //true只能选择1天     
-        })
+         });
+          
+         $('#date1').dateRangePicker({
+            autoClose: true,
+            singleDate : true,
+            showShortcuts:false,   //去掉快捷html
+            inline:false,
+            singleMonth:false,  //true显示1个月，false为2个月
+            batchMode:true,
+            stickyMonths:true, //如果是true，只会有一个以前和一个下一个按钮。点击他们将改变两个月。
+            // extraClass:'dengcb',  //添加class
+            showTopbar:false,     //true显示确定按钮 false不显示确定按钮选择好就确定
+            selectForward:false,   //true选择开始的时间前面就不能选，默认false
+            selectBackward:false,  //true只能选择1天     
+         })
      }); 
   </script>
 </body>
