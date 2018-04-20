@@ -1,6 +1,18 @@
-var nameEl = document.getElementById('picker');
-var nameProvince=document.getElementById('province');
-var nameCity=document.getElementById('city');
+
+var dataId;
+
+function selectCity(nameEl){
+  dataId=$(nameEl).attr("data-id");
+  var nameEl=$(".city[data-id='"+dataId+"']");
+  console.log(dataId,nameEl);
+
+  
+  $(nameEl).on('click', function () {
+    picker.show();
+  });
+}
+
+
 
 var first = []; /* 省，直辖市 */
 var second = []; /* 市 */
@@ -43,7 +55,7 @@ var picker = new Picker({
 	title: '选择城市'
 });
 
-picker.on('picker.select', function (selectedVal, selectedIndex) {
+picker.on('picker.select', function (selectedVal, selectedIndex,obj) {
   var text1 = first[selectedIndex[0]].text;
   var text2 = second[selectedIndex[1]].text;
   var dataId1 = first[selectedIndex[0]].id;
@@ -55,9 +67,12 @@ picker.on('picker.select', function (selectedVal, selectedIndex) {
   // var text3 = third[selectedIndex[2]] ? third[selectedIndex[2]].text : '';
 
   // nameEl.innerText = text1 + ' ' + text2 + ' ' + text3;
-	nameEl.innerText = text1 + ' ' + text2;
-  nameProvince.value=dataId1;
-  nameCity.value=dataId2;
+	$(".city[data-id='"+dataId+"']").text( text1 + ' ' + text2);
+  $(".city[data-id='"+dataId+"']").attr({
+    "data-province-id":dataId1,
+    "data-pcity-id":dataId2,
+  });
+
 });
 
 picker.on('picker.change', function (index, selectedIndex) {
@@ -111,7 +126,6 @@ picker.on('picker.change', function (index, selectedIndex) {
   //     picker.scrollColumn(2, 0)
   //   }
   // }
-
 });
 
 // picker.on('picker.valuechange', function (selectedVal, selectedIndex) {
@@ -119,9 +133,7 @@ picker.on('picker.change', function (index, selectedIndex) {
 //   console.log(selectedIndex);
 // });
 
-nameEl.addEventListener('click', function () {
-	picker.show();
-});
+
 
 
 
