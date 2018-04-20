@@ -6,10 +6,8 @@ function selectCity(nameEl){
   var nameEl=$(".city[data-id='"+dataId+"']");
   console.log(dataId,nameEl);
 
-  
-  $(nameEl).on('click', function () {
-    picker.show();
-  });
+
+  picker.show();
 }
 
 
